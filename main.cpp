@@ -3,18 +3,23 @@
 #include <wininet.h>
 #include <sstream>
 
+/*/Please remove the star on left but dont remove namespaces*/namespace GitHub{namespace Nircek{
 
-using namespace std;
-string download(string url){
+//  /*/comment*/something();
+//  change to
+//  //comment*/something();
+
+std::string wineasyhttpclient(std::string url){
+    //TODO: GITHUB LINK
     //inspired by joske's program found in http://www.dreamincode.net/forums/topic/101532-download-file-from-url/
 
     HINTERNET hIurl, hInet;
-    string ret;
-    stringstream ss;
+    std::string ret;
+    std::stringstream ss;
     try{
         goto l;
         err:
-        ss<<'/'<<GetLastError();
+        ss<<'/'<<GetLastError();//https://support.microsoft.com/en-us/help/193625/info-wininet-error-codes-12001-through-12156
         return ss.str();
         l:
         if(InternetAttemptConnect(0)!=ERROR_SUCCESS)goto err;
@@ -25,7 +30,7 @@ string download(string url){
         unsigned long readed;
         do
         {
-            if(!InternetReadFile(hIurl,&buf,BUF_SIZE,&readed))return string("/644");//ERROR WITH DOWNLOAD
+            if(!InternetReadFile(hIurl,&buf,BUF_SIZE,&readed))goto err;
             ret.append((const char*) buf, readed);
         }while (readed);
     }
@@ -38,14 +43,12 @@ string download(string url){
     InternetCloseHandle(hInet);
     return ret;
 }
+/*/if you comment namespaces coment this too*/}}
 
+using namespace std;
+using namespace GitHub::Nircek;
 int main()
 {
-    try{
-        cout<<download(string("htp://cboard.cprogramming.com/windows-programming/72216-wininet-gcc-how.html"))<<'\n'<<'\n';
-    }catch(const char* err){
-        cerr<<"\n\n\nERR:"<<err<<"\n\n\n\n";
-    }
-    cout << "Hello world!" << endl;
+    cout<<wineasyhttpclient("https://github.com/Nircek/")<<'\n'<<'\n';
     return 0;
 }

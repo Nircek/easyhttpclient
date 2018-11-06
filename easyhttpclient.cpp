@@ -1,5 +1,5 @@
-#include "wineasyhttpclient.hpp"
-std::string wineasyhttpclient(std::string url){
+#include "easyhttpclient.hpp"
+std::string easyhttpclient(std::string url){
     //  https://github.com/Nircek/wineasyhttpclient
     //inspired by joske's program found in http://www.dreamincode.net/forums/topic/101532-download-file-from-url/
 

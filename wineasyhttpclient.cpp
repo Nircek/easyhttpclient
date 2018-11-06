@@ -1,7 +1,5 @@
 #include "wineasyhttpclient.hpp"
-std::string
-/*/Please remove the star on left but dont remove namespaces*/GitHub::Nircek::
-wineasyhttpclient(std::string url){
+std::string wineasyhttpclient(std::string url){
     //  https://github.com/Nircek/wineasyhttpclient
     //inspired by joske's program found in http://www.dreamincode.net/forums/topic/101532-download-file-from-url/
 

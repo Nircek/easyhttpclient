@@ -1,5 +1,10 @@
 #include "easyhttpclient.hpp"
-std::string easyhttpclient(std::string url){
+#include <sstream>
+#ifdef _WIN32
+#include <wininet.h>
+//ADD wininet TO LINKER
+std::string easyhttpclient(std::string url) {
+
     //  https://github.com/Nircek/wineasyhttpclient
     //inspired by joske's program found in http://www.dreamincode.net/forums/topic/101532-download-file-from-url/
 
@@ -28,3 +33,8 @@ std::string easyhttpclient(std::string url){
     InternetCloseHandle(hInet);
     return ret;
 }
+#else
+std::string easyhttpclient(std::string url) {
+    return "\\501";
+}
+#endif
